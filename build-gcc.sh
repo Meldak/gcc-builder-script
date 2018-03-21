@@ -3,26 +3,28 @@ WORKDIR="$HOME/src" #Aqui define el directorio en donde instalar el codigo fuent
 
 mkdir $WORKDIR
 
-#instalamos algunas dependencias para CentOS, en Ubuntu solo marcara error en el comando yum a ignorara estos.
+# Instalamos algunas dependencias para CentOS, en Ubuntu marcara error en el comando yum e ignorara estas lineas.
 sudo yum groupinstall 'Development Tools'
 yum install gmp-devel mpfr-devel libmpc-devel
 
-# descargamos el codigo fuente
+apt-get install build-essential
+
+# Descargamos el codigo fuente
 cd $WORKDIR
 wget http://www.netgull.com/gcc/releases/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.gz
-#Descomprimimos el codigo fuente
+# Descomprimimos el codigo fuente
 tar xzvf gcc-${GCC_VERSION}.tar.gz
 
-# descargamos los prerequisitos
+# Descargamos los prerequisitos
 cd gcc-${GCC_VERSION}
 ./contrib/download_prerequisites
 
-# creamos el directorio para el compilado
+# Creamos el directorio para el compilado
 cd ..
 mkdir gcc-$(GCC_VERSION)-build
 cd gcc-$(GCC_VERSION)-build
 
-# compilamos 
+# Compilamos 
 ../gcc-${GCC_VERSION}/configure\ #archivo de configuracion de GCC
     --enable-languages=c,c++   \ #habilitamos los lenguajes c y c++ solamente
     --disable-multilib		   \ #deshabilitamos las  multilibrerias para evitar que pida dependencias que no necesitamos
