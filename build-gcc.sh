@@ -2,7 +2,7 @@ GCC_VERSION="5.5.0" #Aqui define la version de GCC que deseas instalar
 WORKDIR="$HOME/src" #Aqui define el directorio en donde instalar el codigo fuente
 
 if [ ! -e WORKDIR]; then
-mkdir WORKDIR # si no exixste la carpeta de trabajo se crea
+mkdir $WORKDIR # si no exixste la carpeta de trabajo se crea
 fi
 
 # Instalamos algunas dependencias para CentOS, en Ubuntu marcara error en el comando yum e ignorara estas lineas.
